@@ -1,0 +1,27 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+    <head>
+        <title>Main Page</title>
+    </head>
+    <body>
+        <form method="post" th:action="@{/auth/logout}">
+            <button type="submit">Logout</button>
+        </form>
+        <p><a href="/cart">Cart</a></p>
+        <p><a href="/orders">Orders</a></p>
+        <p><a href="/admin/menu" th:if="${user.getRole() == T(ru.smackmbu.foodmarket.models.Role).ADMIN}">ADMIN MENU</a></p>
+
+        <p th:text="'Balance: ' + ${user.getBalance()}"/>
+
+        <form method="post" th:action="@{/buy}" th:each="product : ${products}">
+            <table border="1">
+                <tr><td th:text="${product.getName()}"/></tr>
+                <tr><td th:text="'Cost:' + ${product.getCost()}"/></tr>
+                <tr><td th:text="'Available:' + ${product.getCount()}"/></tr>
+                <label for="count">Count</label>
+                <input type="number" id="count" name="count" value="1">
+            </table>
+            <input type="hidden" id="id" name="id" th:value="${product.getId()}">
+            <button type="submit">Add to cart</button>
+        </form>
+    </body>
+</html>

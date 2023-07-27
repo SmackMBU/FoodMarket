@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Balance</title>
+</head>
+<body>
+<form method="post" th:action="@{/admin/addbalance}">
+    <p>
+        <label for="id">User Id</label>
+        <input type="text" id="id" name="id" placeholder="Id" required>
+    </p>
+    <p>
+        <label for="balance">Balance</label>
+        <input type="number" id="balance" name="balance" placeholder="Balance" required>
+    </p>
+    <button type="submit">Add Balance</button>
+</form>
+</body>
+</html>

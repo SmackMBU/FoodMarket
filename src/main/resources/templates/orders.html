@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<a href="/">Main</a>
+<div th:each="order : ${orders}">
+    <table border="1">
+    <tr><td th:text="'Order id: ' + ${order.getId()}"></td>
+        <td>Name</td>
+        <td>Cost</td>
+        <td>Count</td>
+    </tr>
+        <p th:each="product : ${order.getProductList()}">
+            <tr>
+                <td></td>
+                <td th:text="${product.key.getName()}"></td>
+                <td th:text="${product.key.getCost()}"></td>
+                <td th:text="${product.value}"></td>
+            </tr>
+        </p>
+        <tr><td th:text="'Total Cost: ' + ${order.getTotalCost()}"></td></tr>
+    </table>
+</div>
+</body>
+</html>

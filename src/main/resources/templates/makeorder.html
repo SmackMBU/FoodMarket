@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Order</title>
+</head>
+<body>
+    <p th:text="'Balance: ' + ${balance}"/>
+
+    <form method="post" th:action="@{/pay}">
+        <table border="1" th:each="product : ${products}">
+            <tr><td th:text="${product.key.getName()}"/></tr>
+            <tr><td th:text="'Cost:' + ${product.key.getCost()}"/></tr>
+            <tr><td th:text="'Count: ' + ${product.value}"/></tr>
+        </table>
+        <p th:text="'Total Cost: ' + ${totalCost}"/>
+        <input type="hidden" id="totalCost" name="totalCost" th:value="${totalCost}"/>
+        <button type="submit">Pay</button>
+    </form>
+</body>
+</html>
